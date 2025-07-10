@@ -1,0 +1,4 @@
+<patch>
+  <setattribute xpath="//item_display_info[@display_type='foodSmoothie']/display_entry[@name='dRunSpeed']" name="title_key">statStaminaRegen</setattribute>
+  <setattribute xpath="//item_display_info[@display_type='foodSmoothie']/display_entry[@name='dRunSpeed']" name="name">dStaminaRegen</setattribute>
+</patch>

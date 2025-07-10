@@ -1,0 +1,10 @@
+<patch>
+  <setattribute xpath="//item[@name='foodBurntSmoothie']/effect_group/display_value[@name='dRunSpeed']" name="value">.2</setattribute>
+  <setattribute xpath="//item[@name='foodBurntSmoothie']/effect_group/display_value[@name='dRunSpeed']" name="name">dStaminaRegen</setattribute>
+  <setattribute xpath="//item[@name='foodOasisSmoothie']/effect_group/display_value[@name='dRunSpeed']" name="value">.2</setattribute>
+  <setattribute xpath="//item[@name='foodOasisSmoothie']/effect_group/display_value[@name='dRunSpeed']" name="name">dStaminaRegen</setattribute>
+  <setattribute xpath="//item[@name='foodFrostbiteSmoothie']/effect_group/display_value[@name='dRunSpeed']" name="value">.2</setattribute>
+  <setattribute xpath="//item[@name='foodFrostbiteSmoothie']/effect_group/display_value[@name='dRunSpeed']" name="name">dStaminaRegen</setattribute>
+  <setattribute xpath="//item[@name='foodAtomicSmoothie']/effect_group/display_value[@name='dRunSpeed']" name="value">.2</setattribute>
+  <setattribute xpath="//item[@name='foodAtomicSmoothie']/effect_group/display_value[@name='dRunSpeed']" name="name">dStaminaRegen</setattribute>
+</patch>
