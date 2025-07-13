@@ -2,75 +2,88 @@
   <setattribute xpath="//triggered_effect[@trigger='onSelfBuffStart'][@action='ModifyCVar'][@cvar='$StormDamage']" name="value">0</setattribute>
   <append xpath="//buff[@name='buffBurnt_Storm' or @name='buffDesert_Storm' or @name='buffSnow_Storm' or @name='buffWasteland_Storm']">
     <effect_group>
+      <triggered_effect trigger="onSelfKilledOther" action="CallGameEvent" target="other" event="buff_rez">
+        <requirement name="EntityTagCompare" target="other" tags="zombie"/>
+      </triggered_effect>
       <passive_effect name="Mobility" operation="perc_add" value="-.2"/>
       <passive_effect name="StaminaChangeOT" operation="perc_add" value="-.2"/>
-			<passive_effect name="AttacksPerMinute" operation="perc_add" value="-.05"/>
-			<passive_effect name="EntityDamage" operation="perc_add" value=".2">
-				<requirement name="HoldingItemHasTags" tags="melee"/>
-			</passive_effect>
-			<passive_effect name="BlockDamage" operation="perc_add" value=".2">
-				<requirement name="HoldingItemHasTags" tags="melee"/>
-			</passive_effect>
+      <passive_effect name="AttacksPerMinute" operation="perc_add" value="-.05"/>
+      <passive_effect name="EntityDamage" operation="perc_add" value=".2">
+        <requirement name="HoldingItemHasTags" tags="melee"/>
+      </passive_effect>
+      <passive_effect name="BlockDamage" operation="perc_add" value=".2">
+        <requirement name="HoldingItemHasTags" tags="melee"/>
+      </passive_effect>
       <passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="-.2">
         <requirement name="HoldingItemHasTags" tags="ranged"/>
       </passive_effect>
-			<passive_effect name="LootDropProb" operation="perc_add" value=".5"/>
-      <passive_effect name="LootStage" operation="perc_add" value=".1"/>
-			<passive_effect name="PlayerExpGain" operation="perc_add" value=".2" tags="Kill"/>
+      <passive_effect name="DamageFalloffRange" operation="perc_add" value="-.2"/>
+      <passive_effect name="LootDropProb" operation="perc_add" value="4"/>
+      <passive_effect name="GameStage" operation="perc_add" value=".2"/>
+      <passive_effect name="LootStage" operation="perc_add" value=".2"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value=".2" tags="Kill"/>
       <passive_effect name="VehicleFuelUsePer" operation="perc_add" value=".05"/>
     </effect_group>
   </append>
 
-  <remove xpath="//buff[@name='buffBurntSmoothieRun']/passive_effect[@name='RunSpeed']"/>
+  <remove xpath="//buff[@name='buffBurntSmoothieRun']//passive_effect[@name='RunSpeed']"/>
   <append xpath="//buff[@name='buffBurntSmoothieRun']">
     <effect_group>
       <passive_effect name="StaminaChangeOT" operation="perc_add" value=".2">
         <requirement name="!HasBuff" buff="buffHealWaterMax"/>
-        <requirement name="InBiome" biome="9"/><!-- burnt_forest -->
+        <requirement name="InBiome" biome="9"/>
+        <!-- burnt_forest -->
       </passive_effect>
       <passive_effect name="StaminaChangeOT" operation="perc_add" value=".1">
         <requirement name="HasBuff" buff="buffHealWaterMax"/>
-        <requirement name="InBiome" biome="9"/><!-- burnt_forest -->
+        <requirement name="InBiome" biome="9"/>
+        <!-- burnt_forest -->
       </passive_effect>
     </effect_group>
   </append>
-  <remove xpath="//buff[@name='buffOasisSmoothieRun']/passive_effect[@name='RunSpeed']"/>
+  <remove xpath="//buff[@name='buffOasisSmoothieRun']//passive_effect[@name='RunSpeed']"/>
   <append xpath="//buff[@name='buffOasisSmoothieRun']">
     <effect_group>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value=".2">
-				<requirement name="!HasBuff" buff="buffHealWaterMax"/>
-        <requirement name="InBiome" biome="5"/><!-- desert -->
-			</passive_effect>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value=".1">
-				<requirement name="HasBuff" buff="buffHealWaterMax"/>
-        <requirement name="InBiome" biome="5"/><!-- desert -->
-			</passive_effect>
-		</effect_group>
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value=".2">
+        <requirement name="!HasBuff" buff="buffHealWaterMax"/>
+        <requirement name="InBiome" biome="5"/>
+        <!-- desert -->
+      </passive_effect>
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value=".1">
+        <requirement name="HasBuff" buff="buffHealWaterMax"/>
+        <requirement name="InBiome" biome="5"/>
+        <!-- desert -->
+      </passive_effect>
+    </effect_group>
   </append>
-  <remove xpath="//buff[@name='buffFrostbiteSmoothieRun']/passive_effect[@name='RunSpeed']"/>
+  <remove xpath="//buff[@name='buffFrostbiteSmoothieRun']//passive_effect[@name='RunSpeed']"/>
   <append xpath="//buff[@name='buffFrostbiteSmoothieRun']">
     <effect_group>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value=".2">
-				<requirement name="!HasBuff" buff="buffHealWaterMax"/>
-        <requirement name="InBiome" biome="1"/><!-- snow -->
-			</passive_effect>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value=".1">
-				<requirement name="HasBuff" buff="buffHealWaterMax"/>
-        <requirement name="InBiome" biome="1"/><!-- snow -->
-			</passive_effect>
-		</effect_group>
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value=".2">
+        <requirement name="!HasBuff" buff="buffHealWaterMax"/>
+        <requirement name="InBiome" biome="1"/>
+        <!-- snow -->
+      </passive_effect>
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value=".1">
+        <requirement name="HasBuff" buff="buffHealWaterMax"/>
+        <requirement name="InBiome" biome="1"/>
+        <!-- snow -->
+      </passive_effect>
+    </effect_group>
   </append>
-  <remove xpath="//buff[@name='buffAtomicSmoothieRun']/passive_effect[@name='RunSpeed']"/>
+  <remove xpath="//buff[@name='buffAtomicSmoothieRun']//passive_effect[@name='RunSpeed']"/>
   <append xpath="//buff[@name='buffAtomicSmoothieRun']">
     <effect_group>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value=".2">
-				<requirement name="!HasBuff" buff="buffHealWaterMax"/>
-        <requirement name="InBiome" biome="8"/><!-- wasteland -->
-			</passive_effect>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value=".1">
-				<requirement name="HasBuff" buff="buffHealWaterMax"/>
-        <requirement name="InBiome" biome="8"/><!-- wasteland -->
-			</passive_effect>
-		</effect_group>
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value=".2">
+        <requirement name="!HasBuff" buff="buffHealWaterMax"/>
+        <requirement name="InBiome" biome="8"/>
+        <!-- wasteland -->
+      </passive_effect>
+      <passive_effect name="StaminaChangeOT" operation="perc_add" value=".1">
+        <requirement name="HasBuff" buff="buffHealWaterMax"/>
+        <requirement name="InBiome" biome="8"/>
+        <!-- wasteland -->
+      </passive_effect>
+    </effect_group>
   </append>
 </patch>
