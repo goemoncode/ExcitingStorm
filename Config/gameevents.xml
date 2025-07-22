@@ -1,0 +1,26 @@
+<patch>
+  <append xpath="gameevents">
+    <action_sequence name="spawn_storm_horde">
+      <property name="action_type" value="Game" />
+      <property name="target_type" value="Entity" />
+      <property name="allow_while_dead" value="false" />
+
+      <requirement class="RandomRoll">
+        <property name="min_max" value="0,100" />
+        <property name="operation" value="LTE" />
+        <property name="value" value="50" />
+      </requirement>
+
+      <action class="SpawnEntity">
+        <property name="entity_group" value="ScoutGSList" />
+        <property name="spawn_count" value="3" />
+        <property name="air_spawn" value="false" />
+        <property name="add_to_group" value="zombies" />
+        <property name="safe_spawn" value="true" />
+        <property name="min_distance" value="24" />
+        <property name="max_distance" value="26" />
+        <property name="spawn_type" value="WanderingHorde" />
+      </action>
+    </action_sequence>
+  </append>
+</patch>

@@ -2,9 +2,16 @@
   <setattribute xpath="//triggered_effect[@trigger='onSelfBuffStart'][@action='ModifyCVar'][@cvar='$StormDamage']" name="value">0</setattribute>
   <append xpath="//buff[@name='buffBurnt_Storm' or @name='buffDesert_Storm' or @name='buffSnow_Storm' or @name='buffWasteland_Storm']">
     <effect_group>
-      <triggered_effect trigger="onSelfKilledOther" action="CallGameEvent" target="other" event="buff_rez">
-        <requirement name="EntityTagCompare" target="other" tags="zombie"/>
-      </triggered_effect>
+      <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ExcitingStormTimerSpawn" operation="set" value="0"/>
+      <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ExcitingStormTimerSpawn" operation="add" value="1"/>
+      <triggered_effect trigger="onSelfBuffRemove" action="RemoveCVar" cvar=".ExcitingStormTimerSpawn"/>
+    </effect_group>
+    <effect_group>
+      <requirement name="CVarCompare" cvar=".ExcitingStormTimerSpawn" operation="GTE" value="10"/>
+      <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ExcitingStormTimerSpawn" operation="set" value="0"/>
+      <triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="spawn_storm_horde"/>
+    </effect_group>
+    <effect_group>
       <passive_effect name="Mobility" operation="perc_add" value="-.2"/>
       <passive_effect name="StaminaChangeOT" operation="perc_add" value="-.2"/>
       <passive_effect name="AttacksPerMinute" operation="perc_add" value="-.05"/>
